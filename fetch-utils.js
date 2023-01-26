@@ -31,6 +31,14 @@ export async function checkAuth() {
     if (!user) location.replace('/auth');
 }
 
-export async function redirectIfLoggedIn() {}
+export async function redirectIfLoggedIn() {
+    const user = await getUser();
 
-export async function logout() {}
+    if (user) window.location.href = './other-page';
+}
+
+export async function logout() {
+    const response = await supabase.auth.signOut();
+
+    return response;
+}
