@@ -17,9 +17,19 @@ export async function signupUser(email, password) {
     return response.user;
 }
 
-export async function signInUser(email, password) {}
+export async function signInUser(email, password) {
+    const response = await client.auth.signIn({
+        email: email,
+        password: password,
+    });
+    return response.user;
+}
 
-export async function checkAuth() {}
+export async function checkAuth() {
+    const user = await getUser();
+
+    if (!user) location.replace('/auth');
+}
 
 export async function redirectIfLoggedIn() {}
 
