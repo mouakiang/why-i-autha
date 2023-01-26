@@ -27,8 +27,7 @@ export async function signInUser(email, password) {
 
 export async function checkAuth() {
     const user = await getUser();
-
-    if (!user) location.replace('/auth');
+    if (!user) location.replace('../');
 }
 
 export async function redirectIfLoggedIn() {
@@ -38,7 +37,7 @@ export async function redirectIfLoggedIn() {
 }
 
 export async function logout() {
-    const response = await supabase.auth.signOut();
+    const response = await client.auth.signOut();
 
     return response;
 }
